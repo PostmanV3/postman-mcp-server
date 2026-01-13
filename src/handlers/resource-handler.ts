@@ -14,8 +14,6 @@ export class McpResourceHandler extends BaseResourceHandler {
     'apis',
     'collections',
     'environments',
-    'mocks',
-    'monitors',
     'collection-roles',
     'workspace-roles',
     'collection-access-keys',
@@ -89,19 +87,6 @@ export class McpResourceHandler extends BaseResourceHandler {
         uri: 'postman://environments',
         name: 'Postman Environments',
         description: 'List of all available environments',
-        mimeType: 'application/json',
-      },
-      // Testing & Monitoring Resources
-      {
-        uri: 'postman://mocks',
-        name: 'Postman Mocks',
-        description: 'List of all available mock servers',
-        mimeType: 'application/json',
-      },
-      {
-        uri: 'postman://monitors',
-        name: 'Postman Monitors',
-        description: 'List of all available collection monitors',
         mimeType: 'application/json',
       },
       // Security & Access Control Resources
@@ -262,38 +247,6 @@ export class McpResourceHandler extends BaseResourceHandler {
         description: 'List of forks of a specific environment',
         mimeType: 'application/json',
       },
-      // Mock Resources
-      {
-        uriTemplate: 'postman://mocks/{mockId}',
-        name: 'Mock Server Details',
-        description: 'Details of a specific mock server',
-        mimeType: 'application/json',
-      },
-      {
-        uriTemplate: 'postman://mocks/{mockId}/serverResponses',
-        name: 'Mock Server Responses',
-        description: 'List of server responses for a specific mock',
-        mimeType: 'application/json',
-      },
-      {
-        uriTemplate: 'postman://mocks/{mockId}/callLogs',
-        name: 'Mock Call Logs',
-        description: 'Call logs for a specific mock server',
-        mimeType: 'application/json',
-      },
-      // Monitor Resources
-      {
-        uriTemplate: 'postman://monitors/{monitorId}',
-        name: 'Monitor Details',
-        description: 'Details of a specific monitor',
-        mimeType: 'application/json',
-      },
-      {
-        uriTemplate: 'postman://monitors/{monitorId}/runs',
-        name: 'Monitor Runs',
-        description: 'List of runs for a specific monitor',
-        mimeType: 'application/json',
-      },
       // Role Resources
       {
         uriTemplate: 'postman://collections/{collectionId}/roles',
@@ -409,10 +362,6 @@ export class McpResourceHandler extends BaseResourceHandler {
         return '/collections';
       case 'environments':
         return '/environments';
-      case 'mocks':
-        return '/mocks';
-      case 'monitors':
-        return '/monitors';
       case 'collection-roles':
         return '/roles/collections';
       case 'workspace-roles':
@@ -471,20 +420,6 @@ export class McpResourceHandler extends BaseResourceHandler {
         return `/environments/${params.environmentId}`;
       case 'environments-forks':
         return `/environments/${params.environmentId}/forks`;
-
-      // Mock resources
-      case 'mocks-details':
-        return `/mocks/${params.mockId}`;
-      case 'mocks-server-responses':
-        return `/mocks/${params.mockId}/serverResponses`;
-      case 'mocks-call-logs':
-        return `/mocks/${params.mockId}/callLogs`;
-
-      // Monitor resources
-      case 'monitors-details':
-        return `/monitors/${params.monitorId}`;
-      case 'monitors-runs':
-        return `/monitors/${params.monitorId}/runs`;
 
       // PAN resources
       case 'pan-folder-elements':

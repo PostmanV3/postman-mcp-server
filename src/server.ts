@@ -10,9 +10,9 @@ import {
   UserTools,
   ApiTools,
   AuthTools,
-  MockTools,
-  MonitorTools,
-  AdditionalFeatureTools
+  AdditionalFeatureTools,
+  HealthCheckTool,
+  healthCheck
 } from './tools/index.js';
 import { ToolDefinition, ToolHandler } from './types/index.js';
 import {
@@ -45,9 +45,8 @@ export class PostmanAPIServer {
   private userTools: UserTools;
   private apiTools: ApiTools;
   private authTools: AuthTools;
-  private mockTools: MockTools;
-  private monitorTools: MonitorTools;
   private additionalFeatureTools: AdditionalFeatureTools;
+  private healthCheckTool: HealthCheckTool;
   private toolDefinitions: ToolDefinition[];
   private toolHandlers: Map<string, ToolHandler>;
   private isShuttingDown: boolean;
@@ -114,9 +113,18 @@ export class PostmanAPIServer {
     this.userTools = new UserTools(this.axiosInstance);
     this.apiTools = new ApiTools(this.axiosInstance);
     this.authTools = new AuthTools(this.axiosInstance);
-    this.mockTools = new MockTools(this.axiosInstance);
-    this.monitorTools = new MonitorTools(this.axiosInstance);
     this.additionalFeatureTools = new AdditionalFeatureTools(this.axiosInstance);
+    this.healthCheckTool = new HealthCheckTool();
+
+    // Run silent health check on startup to make sure postman is configured
+    const runSilentHealthCheck = async () => {
+      try {
+        await healthCheck.execute({});
+      } catch (e) {
+        // Silently fail - we dont want to block the server from starting
+      }
+    };
+    runSilentHealthCheck();
 
     // Initialize tool definitions
     this.toolDefinitions = [
@@ -126,9 +134,8 @@ export class PostmanAPIServer {
       ...this.userTools.getToolDefinitions(),
       ...this.apiTools.getToolDefinitions(),
       ...this.authTools.getToolDefinitions(),
-      ...this.mockTools.getToolDefinitions(),
-      ...this.monitorTools.getToolDefinitions(),
       ...this.additionalFeatureTools.getToolDefinitions(),
+      ...this.healthCheckTool.getToolDefinitions(),
     ];
 
     // Initialize tool handlers map
@@ -139,9 +146,8 @@ export class PostmanAPIServer {
       ...this.userTools.getToolMappings(),
       ...this.apiTools.getToolMappings(),
       ...this.authTools.getToolMappings(),
-      ...this.mockTools.getToolMappings(),
-      ...this.monitorTools.getToolMappings(),
       ...this.additionalFeatureTools.getToolMappings(),
+      ...this.healthCheckTool.getToolMappings(),
     };
     this.toolHandlers = new Map(Object.entries(toolMapping));
 

@@ -102,7 +102,10 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
                 schema: { type: 'string' }
               }
             },
-            item: { type: 'array' }
+            item: { 
+              type: 'array',
+              items: {}
+            }
           }
         }
       },
@@ -134,20 +137,6 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         }
       },
       required: ['collection_id', 'collection'],
-    },
-  },
-  {
-    name: 'delete_collection',
-    description: 'Delete a collection',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        collection_id: {
-          type: 'string',
-          description: 'Collection ID',
-        },
-      },
-      required: ['collection_id'],
     },
   },
   {
@@ -226,24 +215,6 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         }
       },
       required: ['collection_id', 'folder_id', 'folder'],
-    },
-  },
-  {
-    name: 'delete_collection_folder',
-    description: 'Delete a folder from a collection',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        collection_id: {
-          type: 'string',
-          description: 'Collection ID',
-        },
-        folder_id: {
-          type: 'string',
-          description: 'Folder ID',
-        },
-      },
-      required: ['collection_id', 'folder_id'],
     },
   },
   {
@@ -331,24 +302,6 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
     },
   },
   {
-    name: 'delete_collection_request',
-    description: 'Delete a request from a collection',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        collection_id: {
-          type: 'string',
-          description: 'Collection ID',
-        },
-        request_id: {
-          type: 'string',
-          description: 'Request ID',
-        },
-      },
-      required: ['collection_id', 'request_id'],
-    },
-  },
-  {
     name: 'create_collection_response',
     description: 'Create a new response in a collection',
     inputSchema: {
@@ -430,24 +383,6 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
         }
       },
       required: ['collection_id', 'response_id', 'response'],
-    },
-  },
-  {
-    name: 'delete_collection_response',
-    description: 'Delete a response from a collection',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        collection_id: {
-          type: 'string',
-          description: 'Collection ID',
-        },
-        response_id: {
-          type: 'string',
-          description: 'Response ID',
-        },
-      },
-      required: ['collection_id', 'response_id'],
     },
   },
   {

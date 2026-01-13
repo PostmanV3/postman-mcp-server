@@ -122,40 +122,6 @@ export class ResourceTemplateHandler {
           mimeType: 'application/json',
         },
 
-        // Mock Server Resources
-        {
-          uriTemplate: 'postman://mocks/{mockId}',
-          name: 'Mock Server Details',
-          description: 'Details of a specific mock server',
-          mimeType: 'application/json',
-        },
-        {
-          uriTemplate: 'postman://mocks/{mockId}/serverResponses',
-          name: 'Mock Server Responses',
-          description: 'List of server responses for a specific mock',
-          mimeType: 'application/json',
-        },
-        {
-          uriTemplate: 'postman://mocks/{mockId}/callLogs',
-          name: 'Mock Call Logs',
-          description: 'Call logs for a specific mock server',
-          mimeType: 'application/json',
-        },
-
-        // Monitor Resources
-        {
-          uriTemplate: 'postman://monitors/{monitorId}',
-          name: 'Monitor Details',
-          description: 'Details of a specific monitor',
-          mimeType: 'application/json',
-        },
-        {
-          uriTemplate: 'postman://monitors/{monitorId}/runs',
-          name: 'Monitor Runs',
-          description: 'List of runs for a specific monitor',
-          mimeType: 'application/json',
-        },
-
         // Security & Access Control Resources
         {
           uriTemplate: 'postman://collections/{collectionId}/roles',
@@ -232,17 +198,6 @@ export class ResourceTemplateHandler {
           case 'environments':
             endpoint = `/environments/${id}`;
             if (subResource === 'forks') endpoint += '/forks';
-            break;
-
-          case 'mocks':
-            endpoint = `/mocks/${id}`;
-            if (subResource === 'serverResponses') endpoint += '/serverResponses';
-            if (subResource === 'callLogs') endpoint += '/callLogs';
-            break;
-
-          case 'monitors':
-            endpoint = `/monitors/${id}`;
-            if (subResource === 'runs') endpoint += '/runs';
             break;
 
           case 'pan':

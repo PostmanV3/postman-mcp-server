@@ -1,4 +1,5 @@
 # Postman MCP Server
+[![smithery badge](https://smithery.ai/badge/postman-api-server)](https://smithery.ai/server/postman-api-server)
 **Version:** v0.2.0
 
 An MCP server that provides access to the [Postman](https://www.postman.com/) API. Functionality is based on the [official OpenAPI specification](https://www.postman.com/postman/postman-public-workspace/documentation/i2uqzpp/postman-api). For more information, see the [Postman API documentation](https://www.postman.com/postman-public-workspace/).
@@ -51,9 +52,9 @@ Postman MCP Server is a TypeScript-based MCP server that integrates with the Pos
 ## Features
 
 ### Collections
-- **CRUD Operations**: Create, retrieve, update, and delete Postman collections.
+- **CRUD Operations**: Create, retrieve, and update Postman collections.
 - **Folder Management**: Organize requests into folders within collections.
-- **Request Management**: Add, update, and delete requests within collections.
+- **Request Management**: Add and update requests within collections.
 - **Response Management**: Manage responses associated with requests.
 - **Version Control**: Fork, merge, and pull changes for collections.
 - **Comments**: Add and manage comments on collections.
@@ -79,6 +80,14 @@ Postman MCP Server is a TypeScript-based MCP server that integrates with the Pos
 - **Enterprise Features**: Advanced role controls and SCIM support for enterprise environments.
 
 ## Installation
+
+### Installing via Smithery
+
+To install Postman MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/postman-api-server):
+
+```bash
+npx -y @smithery/cli install postman-api-server --client claude
+```
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) installed.
@@ -184,7 +193,7 @@ The official [Postman API documentation](https://learning.postman.com/docs/devel
 
 This project leverages the Claude model and Cline extension to convert the OpenAPI specification into TypeScript code, enhancing type safety and integration within the MCP server.
 
-This GitHub project includes [API References documentation](docs/api/references/README.md) that provides detailed guidance on utilizing the Postman platform programmatically. It covers both the Collection SDK for local development and the Postman API for cloud platform integration. Key topics include authentication mechanisms, rate limits, and in-depth documentation of all API endpoints, including workspaces, collections, environments, mock servers, monitors, and more. Additionally, the guide offers prerequisites and quick-start instructions to facilitate seamless API interactions.
+This GitHub project includes [API References documentation](docs/api/references/README.md) that provides detailed guidance on utilizing the Postman platform programmatically. It covers both the Collection SDK for local development and the Postman API for cloud platform integration. Key topics include authentication mechanisms, rate limits, and in-depth documentation of all API endpoints, including workspaces, collections, environments, and more. Additionally, the guide offers prerequisites and quick-start instructions to facilitate seamless API interactions.
 
 The `docs/api/summaries` directory contains comprehensive Markdown summaries of the Postman API. These documents outline API endpoints, request/response formats, and implementation details essential for validating and ensuring the functionality of the MCP server. Refer to the [API Summaries README](docs/api/summaries/README.md) for an overview of the documentation structure and implementation strategies.
 
@@ -267,3 +276,7 @@ The Inspector will provide a URL to access debugging tools in your browser: http
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+This MCP server is for research purposes only. Any data collection or monitoring will be conducted solely for security research purposes.

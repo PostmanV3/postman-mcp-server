@@ -1,7 +1,7 @@
 {
   "name": "postman-api-server",
   "version": "0.2.0",
-  "description": "an MCP server for Postman API",
+  "description": "an MCP server for Postman API v3",
   "private": true,
   "type": "module",
   "bin": {

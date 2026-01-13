@@ -40,32 +40,24 @@ export class CollectionTools extends BasePostmanTool implements ToolHandler {
           return await this.updateCollection(args);
         case 'patch_collection':
           return await this.patchCollection(args);
-        case 'delete_collection':
-          return await this.deleteCollection(args.collection_id);
         case 'create_collection_folder':
           return await this.createCollectionFolder(args);
         case 'get_collection_folder':
           return await this.getCollectionFolder(args);
         case 'update_collection_folder':
           return await this.updateCollectionFolder(args);
-        case 'delete_collection_folder':
-          return await this.deleteCollectionFolder(args);
         case 'create_collection_request':
           return await this.createCollectionRequest(args);
         case 'get_collection_request':
           return await this.getCollectionRequest(args);
         case 'update_collection_request':
           return await this.updateCollectionRequest(args);
-        case 'delete_collection_request':
-          return await this.deleteCollectionRequest(args);
         case 'create_collection_response':
           return await this.createCollectionResponse(args);
         case 'get_collection_response':
           return await this.getCollectionResponse(args);
         case 'update_collection_response':
           return await this.updateCollectionResponse(args);
-        case 'delete_collection_response':
-          return await this.deleteCollectionResponse(args);
         case 'fork_collection':
           return await this.forkCollection(args);
         case 'get_collection_forks':
@@ -138,14 +130,6 @@ export class CollectionTools extends BasePostmanTool implements ToolHandler {
   }
 
   /**
-   * Delete a collection
-   */
-  async deleteCollection(collectionId: string): Promise<ToolCallResponse> {
-    const response = await this.client.delete(`/collections/${collectionId}`);
-    return this.createResponse(response.data);
-  }
-
-  /**
    * Create a new folder in a collection
    */
   async createCollectionFolder(args: any): Promise<ToolCallResponse> {
@@ -176,16 +160,6 @@ export class CollectionTools extends BasePostmanTool implements ToolHandler {
     const response = await this.client.put(
       `/collections/${args.collection_id}/folders/${args.folder_id}`,
       args.folder
-    );
-    return this.createResponse(response.data);
-  }
-
-  /**
-   * Delete a folder from a collection
-   */
-  async deleteCollectionFolder(args: any): Promise<ToolCallResponse> {
-    const response = await this.client.delete(
-      `/collections/${args.collection_id}/folders/${args.folder_id}`
     );
     return this.createResponse(response.data);
   }
@@ -227,16 +201,6 @@ export class CollectionTools extends BasePostmanTool implements ToolHandler {
   }
 
   /**
-   * Delete a request from a collection
-   */
-  async deleteCollectionRequest(args: any): Promise<ToolCallResponse> {
-    const response = await this.client.delete(
-      `/collections/${args.collection_id}/requests/${args.request_id}`
-    );
-    return this.createResponse(response.data);
-  }
-
-  /**
    * Create a new response in a collection
    */
   async createCollectionResponse(args: any): Promise<ToolCallResponse> {
@@ -268,16 +232,6 @@ export class CollectionTools extends BasePostmanTool implements ToolHandler {
     const response = await this.client.put(
       `/collections/${args.collection_id}/responses/${args.response_id}`,
       args.response
-    );
-    return this.createResponse(response.data);
-  }
-
-  /**
-   * Delete a response from a collection
-   */
-  async deleteCollectionResponse(args: any): Promise<ToolCallResponse> {
-    const response = await this.client.delete(
-      `/collections/${args.collection_id}/responses/${args.response_id}`
     );
     return this.createResponse(response.data);
   }

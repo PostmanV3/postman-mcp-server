@@ -30,14 +30,6 @@ export class PromptHandler {
           description: "Show all environments and their variables"
         },
         {
-          name: "list_monitors",
-          description: "Show all active monitors and their status"
-        },
-        {
-          name: "list_mocks",
-          description: "Show all mock servers and their configurations"
-        },
-        {
           name: "analyze_collection",
           description: "Analyze a Postman collection for potential improvements and best practices",
           arguments: [
@@ -152,44 +144,6 @@ export class PromptHandler {
                           '3. Number of variables\n' +
                           '4. Associated collections\n' +
                           '5. Last modified date'
-                  }
-                }
-              ]
-            };
-          }
-
-          case 'list_monitors': {
-            return {
-              messages: [
-                {
-                  role: 'user',
-                  content: {
-                    type: 'text',
-                    text: 'Please show all monitors with:\n\n' +
-                          '1. Monitor name and ID\n' +
-                          '2. Status (active/paused)\n' +
-                          '3. Schedule details\n' +
-                          '4. Associated collection\n' +
-                          '5. Last run status'
-                  }
-                }
-              ]
-            };
-          }
-
-          case 'list_mocks': {
-            return {
-              messages: [
-                {
-                  role: 'user',
-                  content: {
-                    type: 'text',
-                    text: 'Please show all mock servers with:\n\n' +
-                          '1. Mock server name and ID\n' +
-                          '2. Status (online/offline)\n' +
-                          '3. Associated collection\n' +
-                          '4. Environment configuration\n' +
-                          '5. Access settings'
                   }
                 }
               ]

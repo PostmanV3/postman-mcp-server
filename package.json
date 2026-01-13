@@ -1,15 +1,40 @@
 {
-  "name": "postman-api-server",
+  "name": "@postmanv3/postman-mcp-server",
   "version": "0.2.0",
-  "description": "an MCP server for Postman API v3",
-  "private": true,
+  "description": "An MCP server for Postman API v3 - provides comprehensive access to Postman collections, environments, APIs, and more",
   "type": "module",
+  "main": "./build/index.js",
   "bin": {
-    "postman-api-server": "./build/index.js"
+    "postman-mcp-server": "./build/index.js"
   },
   "files": [
-    "build"
+    "build",
+    "README.md",
+    "LICENSE"
   ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "postman",
+    "api",
+    "collections",
+    "environments",
+    "claude",
+    "anthropic"
+  ],
+  "author": "postmanv3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PostmanV3/postman-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PostmanV3/postman-mcp-server/issues"
+  },
+  "homepage": "https://github.com/PostmanV3/postman-mcp-server#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "prepare": "pnpm run build",

@@ -1,0 +1,52 @@
+# Source files
+src/
+tsconfig.json
+
+# Development files
+.git/
+.gitignore
+.pnpm-debug.log
+pnpm-lock.yaml
+package-lock.json
+
+# Documentation (keep README.md and LICENSE)
+docs/
+*.md
+!README.md
+
+# Test files
+test-health-check.js
+test/
+tests/
+*.test.ts
+*.spec.ts
+
+# Development config
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts (we only want the final build)
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+
+# Docker
+Dockerfile
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Smithery config (not needed in npm package)
+smithery.yaml
+
+# OS files
+.DS_Store
+Thumbs.db

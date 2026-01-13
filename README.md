@@ -81,6 +81,20 @@ Postman MCP Server is a TypeScript-based MCP server that integrates with the Pos
 
 ## Installation
 
+### Installing via npm (Recommended)
+
+Install the package globally:
+
+```bash
+npm install -g @postmanv3/postman-mcp-server
+```
+
+Or install locally in your project:
+
+```bash
+npm install @postmanv3/postman-mcp-server
+```
+
 ### Installing via Smithery
 
 To install Postman MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/postman-api-server):
@@ -89,29 +103,34 @@ To install Postman MCP Server for Claude Desktop automatically via [Smithery](ht
 npx -y @smithery/cli install postman-api-server --client claude
 ```
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) installed.
+### Installing from Source
 
-### Steps
+If you prefer to build from source:
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/delano/postman-api-server.git
-    cd postman-api-server
+    git clone https://github.com/PostmanV3/postman-mcp-server.git
+    cd postman-mcp-server
     ```
 
 2. **Install dependencies:**
     ```bash
+    npm install
+    # or
     pnpm install
     ```
 
 3. **Build the server:**
     ```bash
+    npm run build
+    # or
     pnpm run build
     ```
 
 4. **Run in development mode with auto-rebuild:**
     ```bash
+    npm run watch
+    # or
     pnpm run watch
     ```
 
@@ -150,13 +169,15 @@ To use with Claude Desktop, add the server config:
 
 #### Example configuration
 
+**Recommended: Using npx** (works with both global and local installations):
 ```json
 {
   "mcpServers": {
     "postman": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/path/to/postman-api-server/build/index.js"
+        "-y",
+        "@postmanv3/postman-mcp-server"
       ],
       "env": {
         "POSTMAN_API_KEY": "CHANGEME"
@@ -165,6 +186,46 @@ To use with Claude Desktop, add the server config:
   }
 }
 ```
+
+**Alternative: Direct path** (if installed locally):
+```json
+{
+  "mcpServers": {
+    "postman": {
+      "command": "node",
+      "args": [
+        "./node_modules/@postmanv3/postman-mcp-server/build/index.js"
+      ],
+      "env": {
+        "POSTMAN_API_KEY": "CHANGEME"
+      }
+    }
+  }
+}
+```
+
+**Alternative: Global installation path** (typical paths - find yours with `npm root -g`):
+```json
+{
+  "mcpServers": {
+    "postman": {
+      "command": "node",
+      "args": [
+        "/usr/local/lib/node_modules/@postmanv3/postman-mcp-server/build/index.js"
+      ],
+      "env": {
+        "POSTMAN_API_KEY": "CHANGEME"
+      }
+    }
+  }
+}
+```
+
+> [!NOTE]
+> To find your global node_modules path, run `npm root -g` and replace the path above accordingly.
+
+> [!TIP]
+> The `npx` approach is recommended as it automatically finds the package whether it's installed globally or locally, and handles updates automatically.
 
 ### Using Cline
 
@@ -243,16 +304,22 @@ It provides less value for:
 
 Install dependencies:
 ```bash
+npm install
+# or
 pnpm install
 ```
 
 Build the server:
 ```bash
+npm run build
+# or
 pnpm run build
 ```
 
 For development with auto-rebuild:
 ```bash
+npm run watch
+# or
 pnpm run watch
 ```
 
@@ -261,6 +328,8 @@ pnpm run watch
 Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), available as a package script:
 
 ```bash
+npm run inspector
+# or
 pnpm run inspector
 ```
 

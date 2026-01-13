@@ -1,6 +1,7 @@
 # Postman MCP Server
-[![smithery badge](https://smithery.ai/badge/postman-api-server)](https://smithery.ai/server/postman-api-server)
 **Version:** v0.2.0
+
+<a href="https://cursor.com/en-US/install-mcp?name=postman&config=eyJjb21tYW5kIjoibnBtIGkgQHBvc3RtYW52My9wb3N0bWFuLW1jcC1zZXJ2ZXIifQ%3D%3D"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add postman MCP server to Cursor" height="32" /></a>
 
 An MCP server that provides access to the [Postman](https://www.postman.com/) API. Functionality is based on the [official OpenAPI specification](https://www.postman.com/postman/postman-public-workspace/documentation/i2uqzpp/postman-api). For more information, see the [Postman API documentation](https://www.postman.com/postman-public-workspace/).
 
